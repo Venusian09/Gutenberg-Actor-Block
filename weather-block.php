@@ -13,6 +13,9 @@
 class WeatherBlock {
     function __construct() {
         add_action('admin_menu', array($this, 'weatherApiMenu'));
+        if (get_option('weather-api')) {
+            add_action('init', array($this, 'blockAssets'));
+        }
     }
 
     function weatherApiMenu() {
@@ -23,7 +26,7 @@ class WeatherBlock {
         if (wp_verify_nonce($_POST['customNonce'], 'apiWeather') AND current_user_can('manage_options')) {
             update_option('weather-api', sanitize_text_field($_POST['weather-api'])); ?>
             <div class="updated">
-              <p>Your filtered words were saved.</p>
+              <p>Your API key has been saved.</p>
             </div>
           <?php } else { ?>
             <div class="error">
@@ -45,6 +48,15 @@ class WeatherBlock {
         </form>
        </div>
     <? }
+
+    function blockAssets() {
+        wp_register_script('weatherapi', plugin_dir_url(__FILE__) . 'build/index.js', array('wp-blocks', 'wp-element', 'wp-components', 'wp-editor'));
+        wp_enqueue_style('weatherapiCss', plugin_dir_url(__FILE__) . 'build/index.css');
+
+        register_block_type('customplugin/weatherapi', array(
+            'editor_script' => 'weatherapi',
+        ));
+    }
 }
 
 $weatherBlock = new WeatherBlock();

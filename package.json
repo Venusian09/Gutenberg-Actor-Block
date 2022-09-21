@@ -1,0 +1,25 @@
+{
+  "name": "weather-block",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Venusian09/Gutenber-Weather-Block.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Venusian09/Gutenber-Weather-Block/issues"
+  },
+  "homepage": "https://github.com/Venusian09/Gutenber-Weather-Block#readme",
+  "devDependencies": {
+    "@wordpress/scripts": "^24.1.0"
+  }
+}
