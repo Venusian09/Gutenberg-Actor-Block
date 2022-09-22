@@ -1,17 +1,25 @@
+import Edit from "./Edit";
+
 import "./index.scss";
 
-wp.blocks.registerBlockType("weatherapi/weatherapi", {
-  title: "Weather",
-  icon: "cloud",
+wp.blocks.registerBlockType("actorapi/actorapi", {
+  title: "Actor",
+  icon: "admin-users",
   category: "common",
+  attributes: {
+    name: {
+      type: "string",
+      default: "Christian",
+    },
+    lastName: {
+      type: "string",
+      default: "Bale",
+    },
+  },
   edit: Edit,
-  save: SaveSlide,
+  save: SaveActor,
 });
 
-function Edit(props) {
-  return <h1>test backend</h1>;
-}
-
-function SaveSlide(props) {
-  return <h1>test frontend</h1>;
+function SaveActor(props) {
+  return <div class="actor" data-name={JSON.stringify(props.attributes)}></div>;
 }

@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "wp-scripts build",
-    "start": "wp-scripts start",
+    "build": "wp-scripts build src/index.js src/frontend.js src/Edit.js",
+    "start": "wp-scripts start src/index.js src/frontend.js src/Edit.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,5 +21,8 @@
   "homepage": "https://github.com/Venusian09/Gutenber-Weather-Block#readme",
   "devDependencies": {
     "@wordpress/scripts": "^24.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
   }
 }
