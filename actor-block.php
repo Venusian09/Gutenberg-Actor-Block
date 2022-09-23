@@ -57,6 +57,7 @@ class ActorBlock {
        <div class="wrap">
         <h1>Actor Block API Key</h1>
         <?php if ($_POST['submitInfo'] == "true") $this->handleForm() ?>
+        
         <form method="POST">
             <input type="hidden" name="submitInfo" value="true">
             <?php wp_nonce_field('apiActor', 'customNonce') ?>
@@ -73,7 +74,7 @@ class ActorBlock {
 
         if (!is_admin()) {
             wp_enqueue_script('actorFrontend', plugin_dir_url(__FILE__) . 'build/frontend.js', array('wp-element'), '1.0', true);
-            wp_enqueue_style('actorFrontendCss', plugin_dir_url(__FILE__) . 'build/frontend.css');
+                wp_enqueue_style('actorFrontendCss', plugin_dir_url(__FILE__) . 'build/frontend.css');
         }
         
         register_block_type('actorapi/actorapi', array(
@@ -81,6 +82,7 @@ class ActorBlock {
         ));
         wp_localize_script('actorapi', 'apiNonce', array(
             'nonce' => wp_create_nonce( 'wp_rest' ),
+            'page_url' => get_site_url(),
         ));
         wp_enqueue_script('actorapi');
     }
